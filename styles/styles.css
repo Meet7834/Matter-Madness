@@ -1,0 +1,45 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+header{
+    height: 10%;
+    width: 100%;
+    background-color: bisque;
+}
+
+.main-container{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    background-color: cadetblue;
+}
+
+.sidebar-right{
+    width: 15%;
+    background-color:bisque;
+}
+
+.sidebar-left{
+    width: 15%;
+    background-color: bisque;
+}
+
+.sandbox{
+    width: 70%;
+    background-color: cyan;
+    border: 2px solid black ;
+}
+
+footer{
+    height: 10vh;
+    width: 100vw;
+    background-color:bisque;
+}
