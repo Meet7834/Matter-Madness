@@ -15,31 +15,33 @@ header{
     background-color: bisque;
 }
 
-.main-container{
-    height: 80%;
-    width: 100%;
-    display: flex;
-    background-color: cadetblue;
-}
-
-.sidebar-right{
-    width: 20%;
-    background-color:bisque;
-}
-
-.sidebar-left{
-    width: 15%;
-    background-color: bisque;
-}
-
-#canvas{
-    width: 65%;
-    background-color: cyan;
-    border: 2px solid black ;
-}
-
 footer{
     height: 10vh;
     width: 100vw;
     background-color:bisque;
+}
+
+.navbar{
+    display: flex;
+    justify-content:space-between;
+}
+
+.main-container{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    background-color: bisque;
+}
+
+.sidebar-right{
+    width: 20%;
+}
+
+.sidebar-left{
+    width: 15%;
+}
+
+#canvas{
+    width: 65%;
+    border: 2px solid black ;
 }

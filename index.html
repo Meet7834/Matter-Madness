@@ -10,18 +10,38 @@
 
 <body>
     <header>
-        <div class="navbar">Navbar</div>
+        <div class="navbar">
+            <h3>Logo</h3>
+            <h1>Matter Madness</h1>
+            <div>
+                <button>Clear Playground</button>
+                <button>Slingshot Game</button>
+            </div>
+        </div>
     </header>
     <div class="main-container">
-        <div class="sidebar-left">SideBar Left</div>
+        <div class="sidebar-left">
+            <h2>SideBar Left</h2>
+            <br>
+            <p>Here all the present bodies will be shown.</p>
+        </div>
         <div id="canvas"> </div>
-        <div class="sidebar-right"> Sidebar Right</div>
+        <div class="sidebar-right"> 
+            <h2>Sidebar Right</h2>
+            <br>
+            <p>Here you can create new bodies.</p>
+        </div>
     </div>
     <footer>
-        <div class="footer">Footer</div>
+        <div class="footer">
+            <h2>Footer</h2>
+        </div>
     </footer>
     <script src="./js/libraries/matter.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/render/world.js"></script>
+    <script src="./js/render/demo.js"></script>
+    <script src="./js/utils/utils.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
