@@ -23,7 +23,7 @@ header{
 }
 
 .sidebar-right{
-    width: 15%;
+    width: 20%;
     background-color:bisque;
 }
 
@@ -33,7 +33,7 @@ header{
 }
 
 #canvas{
-    width: 70%;
+    width: 65%;
     background-color: cyan;
     border: 2px solid black ;
 }

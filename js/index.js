@@ -17,14 +17,16 @@ let canvasWidth = canvas.clientWidth;
 
 const bodies = []; // this array will keep track of bodies inside the world
 
-// create boundries or walls for each side of the canvas (30 is the thickness). NOTE: x and y are supposed to be center of mass 
-const groundWall = Bodies.rectangle(canvasWidth / 2, canvasHeight , canvasWidth , 30, { isStatic: true}) // x pos, y pos, width, height, opt
-const rightWall = Bodies.rectangle(canvasWidth, canvasHeight / 2, 30, canvasHeight , { isStatic: true }) 
-const leftWall = Bodies.rectangle(0, canvasHeight / 2, 30, canvasHeight , { isStatic: true }) 
-const topWall = Bodies.rectangle(canvasWidth / 2, 0, canvasWidth , 30, { isStatic: true })
+// create boundries or walls for each side of the canvas (30 is the thickness). 
+// arguments: x pos, y pos, width, height, opt
+// x and y are supposed to be center of mass 
+const groundWall = Bodies.rectangle(canvasWidth / 2, canvasHeight + 235, canvasWidth , 500, { isStatic: true}) 
+const rightWall = Bodies.rectangle(canvasWidth + 235, canvasHeight / 2, 500, canvasHeight , { isStatic: true }) 
+const leftWall = Bodies.rectangle(-235, canvasHeight / 2, 500, canvasHeight , { isStatic: true }) 
+const topWall = Bodies.rectangle(canvasWidth / 2, -235, canvasWidth , 500, { isStatic: true })
 
-// create 2 squares to play around with. NOTE: x and y are supposed to be center of mass
-const boxA = Bodies.rectangle(100, 210, 80, 80); // x pos, y pos, width, height, opt
+// create 2 squares to play around with.
+const boxA = Bodies.rectangle(100, 210, 80, 80);
 const boxB = Bodies.rectangle(700, 70, 80, 80);
 
 // push all the bodies in the array so that it's easier to render 
@@ -72,36 +74,36 @@ const resizeCanvas = () =>{
     canvasWidth = canvas.clientWidth;
 
     // updates center of mass of all the walls
-    Body.setPosition(groundWall, { x: canvasWidth / 2, y: canvasHeight });
-    Body.setPosition(rightWall, { x: canvasWidth, y: canvasHeight / 2 });
-    Body.setPosition(leftWall, { x: 0, y: canvasHeight / 2 });
-    Body.setPosition(topWall, { x: canvasWidth / 2, y: 0 });
+    Body.setPosition(groundWall, { x: canvasWidth / 2, y: canvasHeight + 235});
+    Body.setPosition(rightWall, { x: canvasWidth + 235, y: canvasHeight / 2 });
+    Body.setPosition(leftWall, { x: -235, y: canvasHeight / 2 });
+    Body.setPosition(topWall, { x: canvasWidth / 2, y: -235 });
 
     // updates all 4 vertices of each wall. NOTE: vertices order : topLeft -> topRight -> bottomRight -> bottomLeft
     Body.setVertices(groundWall, [
         { x: 0, y: canvasHeight}, // topLeft
         { x: canvasWidth, y: canvasHeight }, // topRight
-        { x: canvasWidth, y: canvasHeight + 30 }, // bottomRight
-        { x: 0, y: canvasHeight + 30} // bottomLeft
+        { x: canvasWidth, y: canvasHeight + 500 }, // bottomRight
+        { x: 0, y: canvasHeight + 500} // bottomLeft
     ]);
 
     Body.setVertices(rightWall, [
         { x: canvasWidth, y: 0 }, // topLeft
-        { x: canvasWidth + 30, y: 0 }, // topRight
-        { x: canvasWidth + 30, y: canvasHeight}, // bottomRight
+        { x: canvasWidth + 500, y: 0 }, // topRight
+        { x: canvasWidth + 500, y: canvasHeight}, // bottomRight
         { x: canvasWidth, y: canvasHeight} // bottomLeft
     ]);
 
     Body.setVertices(leftWall, [
-        { x: -30, y: 0 }, // topLeft
+        { x: -500, y: 0 }, // topLeft
         { x: 0, y: 0 }, // topRight
         { x: 0, y: canvasHeight }, // bottomRight
-        { x: -30, y: canvasHeight } // bottomLeft
+        { x: -500, y: canvasHeight } // bottomLeft
     ]);
 
     Body.setVertices(topWall, [
-        { x: 0, y: -30 }, // topLeft
-        { x: canvasWidth, y: -30 }, // topRight
+        { x: 0, y: -500 }, // topLeft
+        { x: canvasWidth, y: -500 }, // topRight
         { x: canvasWidth, y: 0 }, // bottomRight
         { x: 0, y: 0 } // bottomLeft
     ]);
