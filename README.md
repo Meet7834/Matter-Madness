@@ -22,7 +22,7 @@ Matter Madness is a physics simulator/playground project that allows you to crea
 
 ## Demo
 
-[Link to Live Demo]([https://example.com](https://meet7834.github.io/Matter-Madness/))
+[Link to Live Demo]([(https://meet7834.github.io/Matter-Madness/)])
 
 ## Getting Started
 
@@ -32,12 +32,12 @@ Matter Madness is a physics simulator/playground project that allows you to crea
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/physixperience.git
+   git clone https://github.com/Meet7834/Matter-Madness.git
    ```
 Navigate to the project directory:
 ```
 bash
-cd physixperience
+cd Matter-Madness
 ```
 Open index.html in your web browser or host the project on a web server.
 
