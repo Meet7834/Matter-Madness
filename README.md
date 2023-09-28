@@ -7,11 +7,8 @@ Matter Madness is a physics simulator/playground project that allows you to crea
 - [Features](#features)
 - [Demo](#demo)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -22,7 +19,7 @@ Matter Madness is a physics simulator/playground project that allows you to crea
 
 ## Demo
 
-[Link to Live Demo]([(https://meet7834.github.io/Matter-Madness/)])
+[Link to Live Demo](https://meet7834.github.io/Matter-Madness/)
 
 ## Getting Started
 
