@@ -1,4 +1,4 @@
-// functions: addWalls, resizeCanvas;
+// functions: addWalls, clearCanvas, resizeCanvas;
 
 let groundWall = null;
 let rightWall = null;
@@ -18,6 +18,16 @@ const addWalls = () => {
     bodies.push(leftWall);
     bodies.push(topWall);
     bodies.push(groundWall);
+}
+
+// this will remove all the objects from the world
+const clearCanvas = () => {
+    World.remove(engine.world, bodies); // remove all the bodies from the world using our array
+    bodies.length = 0; // empty the bodies array
+
+    addWalls(); // add the wall to the canvas
+    renderMouseConstraint(); // add mouse constraint
+    World.add(engine.world,bodies); // add all the bodies to the world
 }
 
 // if user resizes window this will resize canvas and walls

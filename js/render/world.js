@@ -7,7 +7,7 @@ const Engine = Matter.Engine,
     Composite = Matter.Composite,
     World = Matter.World,
     Mouse = Matter.Mouse;
-    
+
 const bodies = []; // this array will keep track of bodies inside the world
 
 // this will be used for resizing and initializing size of walls
@@ -17,6 +17,18 @@ let canvasWidth = canvas.clientWidth;
 let render = null;
 const engine = Engine.create();
 let mouseConstraint = null;
+
+const renderMouseConstraint = () => {
+    let mouse = Mouse.create(render.canvas);
+    mouseConstraint = Matter.MouseConstraint.create(engine, {
+        mouse: mouse,
+        constraint: {
+            render: { visible: false }
+        }
+    })
+    render.mouse = mouse;
+    bodies.push(mouseConstraint);
+}
 
 const renderWorld = () => {
     // for rendering the canvas
@@ -31,15 +43,7 @@ const renderWorld = () => {
     });
 
     // to drag bodies around we will need to create a mouse constraint
-    let mouse = Mouse.create(render.canvas);
-    mouseConstraint = Matter.MouseConstraint.create(engine, {
-        mouse: mouse,
-        constraint: {
-            render: { visible: false }
-        }
-    })
-    render.mouse = mouse;
-    bodies.push(mouseConstraint);
+    renderMouseConstraint();
 
     // render the world
     Runner.run(engine);

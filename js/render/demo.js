@@ -31,6 +31,7 @@ const renderDemo = () => {
             firing = false; // set firing to false
         }
     });
+    
 
     // push all the bodies to the bodies array
     bodies.push(platform);
