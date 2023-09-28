@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <!-- navbar -->
     <header>
         <div class="navbar">
             <h3>Logo</h3>
@@ -19,24 +20,99 @@
             </div>
         </div>
     </header>
+
+    <!-- main container -->
     <div class="main-container">
+
+        <!-- left sidebar -->
         <div class="sidebar-left">
             <h2>SideBar Left</h2>
             <br>
             <p>Here all the present bodies will be shown.</p>
         </div>
+
+        <!-- playground canvas -->
         <div id="canvas"> </div>
-        <div class="sidebar-right"> 
-            <h2>Sidebar Right</h2>
-            <br>
-            <p>Here you can create new bodies.</p>
+
+        <!-- right sidebar -->
+        <div class="sidebar-right">
+            <h2>Add Body</h2>
+
+            <label for="bodyTypeSelect">Select Body Type:</label>
+            <select id="bodyTypeSelect">
+                <option value="rectangle">Rectangle</option>
+                <option value="circle">Circle</option>
+                <option value="polygon">Polygon</option>
+                <!-- triange, static rectangle(platform), spring/constraint, trapezoid, stack of items-->
+            </select>
+
+            <!-- rectangle: x, y, width, height -->
+            <!-- circle: x, y, radius -->
+            <!-- polygon: x, y, sides, radius -->
+            <div class="">
+
+                <label for="bodyName">Body Name:</label>
+                <input type="text" id="bodyName" placeholder="Body Name">
+                <br>
+                <label for="xPos">X Position:</label>
+                <input type="number" id="xPos" placeholder="Enter X Position">
+                <br>
+                <label for="yPos">Y Position:</label>
+                <input type="number" id="yPos" placeholder="Enter Y Position">
+                <br>
+
+                <div id="widthInputDiv">
+                    <label for="widthInput">Width:</label>
+                    <input type="number" id="widthInput" placeholder="Enter Width">
+                </div>
+
+                <div id="heightInputDiv">
+                    <label for="heightInput">Height:</label>
+                    <input type="number" id="heightInput" placeholder="Enter Height">
+                </div>
+
+                <div class="hide" id="sidesInputDiv">
+                    <label for="sidesInput">Sides:</label>
+                    <input type="number" id="sidesInput" placeholder="Enter Sides">
+                </div>
+
+                <div class="hide" id="radiusInputDiv">
+                    <label for="radiusInput">Radius:</label>
+                    <input type="number" id="radiusInput" placeholder="Enter Radius">
+                </div>
+
+                <!-- advanced options: angle, friction, firing: on-->
+                <label for="advancedOptionsInput">Advanced Options</label>
+                <input type="checkbox" name="advancedOptionsInput" id="advancedOptionsInput">
+                <div class="hide" id="advancedOptionsDiv">
+
+                    <label for="angle">Angle(in Radian):</label>
+                    <input type="number" id="angle" placeholder="Default: 0">
+                    <br>
+                    <label for="friction">Friction:</label>
+                    <input type="number" id="friction" placeholder="Default: 0.1 ">
+                    <br>
+                    <label for="isStatic">Static:</label>
+                    <input type="checkbox" id="isStatic" placeholder="Default: False ">
+                    
+                </div>
+                <div>
+                    <button id="addBodyBtn">Add Body</button>
+                </div>
+            </div>
+
         </div>
+
     </div>
+
+    <!-- footer -->
     <footer>
         <div class="footer">
             <h2>Footer</h2>
         </div>
     </footer>
+
+    <!-- scripts. NOTE: order of the scripts matters -->
     <script src="./js/libraries/matter.js"></script>
     <script src="./js/render/world.js"></script>
     <script src="./js/render/demo.js"></script>

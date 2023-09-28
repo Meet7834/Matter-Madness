@@ -35,10 +35,15 @@ footer{
 
 .sidebar-right{
     width: 20%;
+    padding-left: 1rem;
 }
 
 .sidebar-left{
     width: 15%;
+}
+
+.hide{
+    display: none;
 }
 
 #canvas{
