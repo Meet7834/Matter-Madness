@@ -67,35 +67,79 @@ addBodyBtn.addEventListener("click", () => {
         return;
     };
 
-    // get x and y center of mass position
-    const x = parseFloat(document.querySelector("#xPos").value) || canvasWidth / 2;
-    const y = parseFloat(document.querySelector("#yPos").value) || canvasHeight / 2;
+    // get all the values from the form
+    let x = parseFloat(document.querySelector("#xPos").value);
+    let y = parseFloat(document.querySelector("#yPos").value);
+    const width = parseFloat(document.querySelector("#widthInput").value) || 75;
+    const height = parseFloat(document.querySelector("#heightInput").value) || 75;
+    const radius = parseFloat(document.querySelector("#radiusInput").value) || 60;
+    const sides = parseInt(document.querySelector("#sidesInput").value) || 3;
+    let isStatic = (document.querySelector("#isStaticInput").checked) ? true : false;
 
+    // if user is trying to render the object outside the world
+    if (x < 15 + width / 2) x = 16 + width / 2;
+    if (y < 15 + height / 2) y = 16 + height / 2;
+
+    // if the user didn't fill x and y values
+    if (isNaN(x)) x = canvasWidth / 2;
+    if (isNaN(y)) y = canvasHeight / 2;
+
+    // if advanced options is checked
+    let angle = 0, friction = 0.1, frictionAir = 0.01, frictionStatic = 0.5;
+    if (showAdvancedCheck.checked) {
+        angle = parseFloat(document.querySelector("#angleInput").value) || 0;
+        friction = parseFloat(document.querySelector("#frictionInput").value);
+        frictionAir = parseFloat(document.querySelector("#frictionAirInput").value);
+        frictionStatic = parseFloat(document.querySelector("#frictionStaticInput").value);
+    }
+
+    // if the user didn't input friction values
+    if (isNaN(friction)) friction = 0.1;
+    if (isNaN(frictionAir)) frictionAir = 0.01;
+    if (isNaN(frictionStatic)) frictionStatic = 0.5;
+    
+    // if the user put friction values more than 1
+    if (friction > 1) friction = 1;
+    if (frictionAir > 1) frictionAir = 1;
+    if (frictionStatic > 1) frictionStatic = 1;
+    
     // Create the body based on the selected type and dimensions
     let newBody;
+    let options = {
+        label: bodyName,
+        angle: angle,
+        friction: friction, frictionAir: frictionAir, frictionStatic: frictionStatic,
+        isStatic: isStatic,
+    }
 
     if (bodyType === "rectangle") {
-        const width = parseFloat(document.querySelector("#widthInput").value) || 75;
-        const height = parseFloat(document.querySelector("#heightInput").value) || 75;
-
-        newBody = Bodies.rectangle(x, y, width, height, { label: bodyName });
+        newBody = Bodies.rectangle(x, y, width, height, options);
     } else if (bodyType === "circle") {
-        const radius = parseFloat(document.querySelector("#radiusInput").value) || 40;
-        
-        newBody = Bodies.circle(x, y, radius, { label: bodyName });
+        newBody = Bodies.circle(x, y, radius, options);
     } else if (bodyType === "polygon") {
-        const radius = parseFloat(document.querySelector("#radiusInput").value) || 40;
-        const sides = parseInt(document.querySelector("#sidesInput").value) || 3;
-        
-        newBody = Bodies.polygon(x, y, sides, radius, { label: bodyName });
+        newBody = Bodies.polygon(x, y, sides, radius, options);
     }
 
     // Add the new body to the simulation
     if (newBody != null) {
         bodies.push(newBody);
         World.add(engine.world, newBody);
-    } else {
-        console.log("its null")
     }
 
 });
+
+const clearInputBtn = document.querySelector("#clearInputBtn");
+clearInputBtn.addEventListener('click', () => {
+    document.querySelector("#bodyName").value = "";
+    document.querySelector("#xPos").value = "";
+    document.querySelector("#yPos").value = "";
+    document.querySelector("#widthInput").value = "";
+    document.querySelector("#heightInput").value = "";
+    document.querySelector("#sidesInput").value = "";
+    document.querySelector("#angleInput").value = "";
+    document.querySelector("#radiusInput").value = "";
+    document.querySelector("#frictionInput").value = "";
+    document.querySelector("#frictionAirInput").value = "";
+    document.querySelector("#frictionStaticInput").value = "";
+    document.querySelector("#isStaticInput").checked = false;
+})

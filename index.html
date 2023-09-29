@@ -81,22 +81,31 @@
                     <input type="number" id="radiusInput" placeholder="Enter Radius">
                 </div>
 
+                <div>
+                    <label for="isStaticInput">Static:</label>
+                    <input type="checkbox" id="isStaticInput" placeholder="Default: False ">
+                </div>
+
                 <!-- advanced options: angle, friction, firing: on-->
                 <label for="advancedOptionsInput">Advanced Options</label>
                 <input type="checkbox" name="advancedOptionsInput" id="advancedOptionsInput">
                 <div class="hide" id="advancedOptionsDiv">
 
-                    <label for="angle">Angle(in Radian):</label>
-                    <input type="number" id="angle" placeholder="Default: 0">
+                    <label for="angleInput">Angle(in Radian):</label>
+                    <input type="number" id="angleInput" placeholder="Default: 0">
                     <br>
-                    <label for="friction">Friction:</label>
-                    <input type="number" id="friction" placeholder="Default: 0.1 ">
+                    <label for="frictionInput">Friction:</label>
+                    <input type="number" id="frictionInput" placeholder="Default: 0.1 ">
                     <br>
-                    <label for="isStatic">Static:</label>
-                    <input type="checkbox" id="isStatic" placeholder="Default: False ">
-                    
+                    <label for="frictionAirInput">Air Friction:</label>
+                    <input type="number" id="frictionAirInput" placeholder="Default: 0.01 ">
+                    <br>
+                    <label for="frictionStaticInput">Static Friction:</label>
+                    <input type="number" id="frictionStaticInput" placeholder="Default: 0.5 ">
+
                 </div>
                 <div>
+                    <button id="clearInputBtn">Clear Inputs</button>
                     <button id="addBodyBtn">Add Body</button>
                 </div>
             </div>
