@@ -29,6 +29,7 @@ const renderDemo = () => {
             bodies.push(ball); // add new ball to our array
             sling.bodyB = ball; // attack spring to it
             firing = false; // set firing to false
+            renderBodiesDiv();
         }
     });
     
@@ -38,4 +39,6 @@ const renderDemo = () => {
     bodies.push(stack);
     bodies.push(ball);
     bodies.push(sling);
+
+    renderBodiesDiv();
 }

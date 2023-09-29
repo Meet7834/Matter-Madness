@@ -9,6 +9,7 @@ const Engine = Matter.Engine,
     Mouse = Matter.Mouse;
 
 const bodies = []; // this array will keep track of bodies inside the world
+const defaultBodies = []; // this array will keep track of bodies inside the world
 
 // this will be used for resizing and initializing size of walls
 const canvas = document.getElementById("canvas");
@@ -27,7 +28,7 @@ const renderMouseConstraint = () => {
         }
     })
     render.mouse = mouse;
-    bodies.push(mouseConstraint);
+    defaultBodies.push(mouseConstraint);
 }
 
 const renderWorld = () => {

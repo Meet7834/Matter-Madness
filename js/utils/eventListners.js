@@ -8,7 +8,9 @@ renderDemoBtn.addEventListener("click", () => {
 
     // { this is part of clearCanvas function
     World.remove(engine.world, bodies); // remove all the bodies from the world using our array
+    World.remove(engine.world, defaultBodies); // remove all the bodies from the world using our array
     bodies.length = 0; // empty the bodies array
+    defaultBodies.length = 0; // empty the defaultBodies array
 
 
     addWalls(); // add the wall to the canvas
@@ -16,7 +18,9 @@ renderDemoBtn.addEventListener("click", () => {
     // }
 
     renderDemo(); // render the demo
+    World.add(engine.world, defaultBodies);
     World.add(engine.world, bodies);
+    renderBodiesDiv();
 });
 
 // hide and show things
@@ -61,11 +65,8 @@ const addBodyBtn = document.getElementById("addBodyBtn");
 addBodyBtn.addEventListener("click", () => {
     // get selected bodyType and body name
     const bodyType = bodyTypeSelect.value;
-    const bodyName = document.querySelector("#bodyName").value || "A";
-    if (bodyName == "") {
-        alert("Please enter valid body name");
-        return;
-    };
+    let bodyName = document.querySelector("#bodyName").value;
+    if (bodyName.trim() == "") bodyName = bodyType.charAt(0).toUpperCase() + bodyType.slice(1) + " Body";
 
     // get all the values from the form
     let x = parseFloat(document.querySelector("#xPos").value);
@@ -124,6 +125,7 @@ addBodyBtn.addEventListener("click", () => {
         angle: angle,
         friction: friction, frictionAir: frictionAir, frictionStatic: frictionStatic,
         isStatic: isStatic,
+        // restitution: 
     }
 
     if (bodyType === "rectangle") {
@@ -139,6 +141,8 @@ addBodyBtn.addEventListener("click", () => {
         bodies.push(newBody);
         World.add(engine.world, newBody);
     }
+
+    renderBodiesDiv();
 
 });
 

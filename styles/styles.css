@@ -42,6 +42,12 @@ footer{
     width: 15%;
 }
 
+.bodyDiv{
+    border: 1px solid black;
+    margin-bottom: 0.4rem;
+    margin-right: 0.4rem;
+}
+
 .hide{
     display: none;
 }

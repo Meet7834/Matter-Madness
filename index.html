@@ -26,9 +26,10 @@
 
         <!-- left sidebar -->
         <div class="sidebar-left">
-            <h2>SideBar Left</h2>
-            <br>
-            <p>Here all the present bodies will be shown.</p>
+            <h2>Bodies</h2>
+            <div id="bodiesDiv">
+
+            </div>
         </div>
 
         <!-- playground canvas -->
@@ -46,9 +47,6 @@
                 <!-- triange, static rectangle(platform), spring/constraint, trapezoid, stack of items-->
             </select>
 
-            <!-- rectangle: x, y, width, height -->
-            <!-- circle: x, y, radius -->
-            <!-- polygon: x, y, sides, radius -->
             <div class="">
 
                 <label for="bodyName">Body Name:</label>
@@ -125,6 +123,7 @@
     <script src="./js/libraries/matter.js"></script>
     <script src="./js/render/world.js"></script>
     <script src="./js/render/demo.js"></script>
+    <script src="./js/render/bodiesDiv.js"></script>
     <script src="./js/utils/utils.js"></script>
     <script src="./js/utils/eventListners.js"></script>
     <script src="./js/main.js"></script>
