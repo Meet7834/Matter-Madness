@@ -70,24 +70,38 @@ addBodyBtn.addEventListener("click", () => {
     // get all the values from the form
     let x = parseFloat(document.querySelector("#xPos").value);
     let y = parseFloat(document.querySelector("#yPos").value);
-    const width = parseFloat(document.querySelector("#widthInput").value) || 75;
-    const height = parseFloat(document.querySelector("#heightInput").value) || 75;
-    const radius = parseFloat(document.querySelector("#radiusInput").value) || 60;
-    const sides = parseInt(document.querySelector("#sidesInput").value) || 3;
+    let width = parseFloat(document.querySelector("#widthInput").value) || 75;
+    let height = parseFloat(document.querySelector("#heightInput").value) || 75;
+    let radius = parseFloat(document.querySelector("#radiusInput").value) || 60;
+    let sides = parseInt(document.querySelector("#sidesInput").value) || 3;
     let isStatic = (document.querySelector("#isStaticInput").checked) ? true : false;
 
-    // if user is trying to render the object outside the world
-    if (x < 15 + width / 2) x = 16 + width / 2;
-    if (y < 15 + height / 2) y = 16 + height / 2;
+    // if user is trying to render the object outside the world:
+    // lower limits:
+    if (bodyType == "rectangle") {
+        if (x < 15 + width / 2) x = 16 + width / 2;
+        if (y < 15 + height / 2) y = 16 + height / 2;
+    } else if (bodyType == "circle" || bodyType == "polygon") {
+        if (x < 16 + radius / 2) x = 16 + radius;
+        if (y < 16 + radius / 2) y = 16 + radius;
+    }
+    // upper limits:
+    if (x > canvasWidth) x = canvasWidth / 2;
+    if (y > canvasHeight) y = canvasHeight / 2;
 
     // if the user didn't fill x and y values
     if (isNaN(x)) x = canvasWidth / 2;
     if (isNaN(y)) y = canvasHeight / 2;
 
+    // if user is trying to render a object bigger than the world:
+    if (width > canvasWidth) width = canvasWidth - 30;
+    if (height > canvasHeight) height = canvasHeight - 30;
+    if (radius > canvasWidth / 2 || radius > canvasHeight / 2) radius = (Math.min(canvasHeight, canvasWidth) / 2) - 15;
+
     // if advanced options is checked
     let angle = 0, friction = 0.1, frictionAir = 0.01, frictionStatic = 0.5;
     if (showAdvancedCheck.checked) {
-        angle = parseFloat(document.querySelector("#angleInput").value) || 0;
+        angle = (parseFloat(document.querySelector("#angleInput").value) / 180 * 3.14) || 0;
         friction = parseFloat(document.querySelector("#frictionInput").value);
         frictionAir = parseFloat(document.querySelector("#frictionAirInput").value);
         frictionStatic = parseFloat(document.querySelector("#frictionStaticInput").value);
@@ -97,12 +111,12 @@ addBodyBtn.addEventListener("click", () => {
     if (isNaN(friction)) friction = 0.1;
     if (isNaN(frictionAir)) frictionAir = 0.01;
     if (isNaN(frictionStatic)) frictionStatic = 0.5;
-    
+
     // if the user put friction values more than 1
     if (friction > 1) friction = 1;
     if (frictionAir > 1) frictionAir = 1;
     if (frictionStatic > 1) frictionStatic = 1;
-    
+
     // Create the body based on the selected type and dimensions
     let newBody;
     let options = {
