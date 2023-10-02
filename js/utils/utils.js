@@ -87,5 +87,4 @@ const resizeCanvas = () => {
 
 const refreshedPage = () => {
     renderBodiesDiv();
-    unhideInfoPage();
 }
