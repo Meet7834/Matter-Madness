@@ -31,17 +31,17 @@ Matter Madness is a physics simulator/playground project that allows you to crea
    ```bash
    git clone https://github.com/Meet7834/Matter-Madness.git
    ```
-Navigate to the project directory:
-```
-bash
-cd Matter-Madness
-```
-Open index.html in your web browser or host the project on a web server.
+2. Navigate to the project directory:
+    ```
+    bash
+    cd Matter-Madness
+    ```
+3. Open index.html in your web browser or host the project on a web server.
 
-Usage
-There is a demo playground also built in to get a idea of what you can build. 
-Choose a body type from the dropdown menu.
-Enter the desired dimensions or properties for the body.
-Click the "Add Body" button to add the body to the simulation.
-Interact with the simulation using the mouse.
-Update and Delete Bodies using left sidebar.
+### Usage
+- There is a demo playground also built in to get a idea of what you can build. 
+- Choose a body type from the dropdown menu.
+- Enter the desired dimensions or properties for the body.
+- Click the "Add Body" button to add the body to the simulation.
+- Interact with the simulation using the mouse.
+- Update and Delete Bodies using left sidebar.

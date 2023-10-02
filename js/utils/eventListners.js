@@ -2,7 +2,7 @@
 const clearPlaygroundBtn = document.querySelector("#clearPlaygroundBtn");
 clearPlaygroundBtn.addEventListener("click", clearCanvas);
 
-// rander the demo for the playground
+// render the demo for the playground
 const renderDemoBtn = document.querySelector("#renderDemoBtn");
 renderDemoBtn.addEventListener("click", () => {
 
@@ -66,14 +66,14 @@ addBodyBtn.addEventListener("click", () => {
     // get selected bodyType and body name
     const bodyType = bodyTypeSelect.value;
     let bodyName = document.querySelector("#bodyName").value;
-    if (bodyName.trim() == "") bodyName = bodyType.charAt(0).toUpperCase() + bodyType.slice(1) + " Body";
+    if (bodyName.trim() == "") bodyName = bodyType.charAt(0).toUpperCase() + bodyType.slice(1) + " Body #" + (bodies.length + 1);
 
     // get all the values from the form
     let x = parseFloat(document.querySelector("#xPos").value);
     let y = parseFloat(document.querySelector("#yPos").value);
     let width = parseFloat(document.querySelector("#widthInput").value) || 75;
     let height = parseFloat(document.querySelector("#heightInput").value) || 75;
-    let radius = parseFloat(document.querySelector("#radiusInput").value) || 60;
+    let radius = parseFloat(document.querySelector("#radiusInput").value) || 50;
     let sides = parseInt(document.querySelector("#sidesInput").value) || 3;
     let isStatic = (document.querySelector("#isStaticInput").checked) ? true : false;
 
