@@ -41,6 +41,21 @@ footer{
 .sidebar-left{
     width: 15%;
 }
+.sidebar-left-scroll{
+    width: 100%;
+    max-height: 94%;
+    overflow-y: auto;
+}
+.sidebar-left-scroll::-webkit-scrollbar{
+    width: 8px;
+}
+.sidebar-left-scroll::-webkit-scrollbar-thumb{
+    background-color: #888;
+    border-radius: 5px;
+}
+.sidebar-left-scroll::-webkit-scrollbar-thumb:hover{
+    background-color: #555;
+}
 
 .bodyDiv{
     border: 1px solid black;
