@@ -20,7 +20,7 @@ renderDemoBtn.addEventListener("click", () => {
     renderDemo(); // render the demo
     World.add(engine.world, defaultBodies);
     World.add(engine.world, bodies);
-    renderBodiesDiv();
+    refreshedPage();
 });
 
 // hide and show things
@@ -142,7 +142,7 @@ addBodyBtn.addEventListener("click", () => {
         World.add(engine.world, newBody);
     }
 
-    renderBodiesDiv();
+    refreshedPage();
 
 });
 

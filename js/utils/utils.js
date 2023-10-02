@@ -29,8 +29,8 @@ const clearCanvas = () => {
 
     addWalls(); // add the wall to the canvas
     renderMouseConstraint(); // add mouse constraint
-    World.add(engine.world,defaultBodies); // add all the bodies to the world
-    World.add(engine.world,bodies); // add all the bodies to the world
+    World.add(engine.world, defaultBodies); // add all the bodies to the world
+    World.add(engine.world, bodies); // add all the bodies to the world
     renderBodiesDiv();
 }
 
@@ -83,4 +83,9 @@ const resizeCanvas = () => {
     render.options.height = canvasHeight + 1;
     render.canvas.width = canvasWidth + 1;
     render.canvas.height = canvasHeight + 1;
+}
+
+const refreshedPage = () => {
+    renderBodiesDiv();
+    unhideInfoPage();
 }
