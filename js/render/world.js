@@ -40,7 +40,8 @@ const renderWorld = () => {
         options: {
             height: canvas.clientHeight + 1,
             width: canvas.clientWidth + 1,
-            wireframes: false // this will make bodies look little bit better graphics wise
+            wireframes: false, // this will make bodies look little bit better graphics wise
+            // background: "black"
         }
     });
 

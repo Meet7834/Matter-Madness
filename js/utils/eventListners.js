@@ -126,8 +126,13 @@ addBodyBtn.addEventListener("click", () => {
         angle: angle,
         friction: friction, frictionAir: frictionAir, frictionStatic: frictionStatic,
         isStatic: isStatic,
+        render: {
+            // fillStyle: null
+        },
+        // restitution: 0.2
         // restitution: 
     }
+    // if (isStatic) options.render.fillStyle = "#fff";
 
     if (bodyType === "rectangle") {
         newBody = Bodies.rectangle(x, y, width, height, options);
@@ -142,7 +147,6 @@ addBodyBtn.addEventListener("click", () => {
         bodies.push(newBody);
         World.add(engine.world, newBody);
     }
-
     refreshedPage();
 
 });

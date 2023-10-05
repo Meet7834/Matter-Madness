@@ -1,0 +1,32 @@
+1. Render demo:
+    - a demo game will be loaded in the canvas
+
+2. Clear Playground: 
+    - all the bodies inside the canvas will be deleted
+
+3. Resize the canvas:
+    - when the user resizes the browser window all the walls will adjust accordingly
+
+4. Right Sidebar:(Add Body (Create)):
+    - different Type of bodies: rectangle, circle, polygon... (will add constraint in future)
+    - option to make the bodie static
+    - advanced options:
+        - angle of the body
+        - 3 diffrent type of friction of the body
+        - will add restituation in future
+    - validations like
+        - if user inputs x or y less than 0 then it will spawn the object at the start of the canvas
+        - if user inputs x or y more than canvasWidth and canvasHeight then object will spawn at the end of the canvas
+        - if the user tries to spawn object bigger than the canvas then the object will be the size of the canvas.
+        - if user leaves all the fields empty then default values will be assigned to the created body
+    - Body Naming: 
+        - if the body name field is empty then default body name will be assigned which will be {BodyType} + " Body#" + {number of unnamed bodies since user last cleared the playground}
+    - Clear Input: clears all the input in the form
+
+5. Left SideBar: (Information about the bodies and update/delete functions):
+    - render all the bodies information on the left side.
+    - If the user adds too many bodies on the canvas then the left sidebar will become scrollable.
+    - If the user clicks the div then it will show the information about respective body.
+    - user can delete the body by clicking the delete button on respective div.
+    - update the body using update button.
+    - if the user hovers over the div then the body responding to the div will be highlighted on the canvas.
