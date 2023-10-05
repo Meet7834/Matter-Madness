@@ -25,7 +25,8 @@ const clearCanvas = () => {
     World.remove(engine.world, bodies); // remove all the bodies from the world using our array
     World.remove(engine.world, defaultBodies); // remove all the bodies from the world using our array
     bodies.length = 0; // empty the bodies array
-    defaultBodies.length = 0; // empty the bodies array
+    defaultBodies.length = 0; // empty the default bodies array
+    numberOfBodies = 0; // set the number of bodies to zero
 
     addWalls(); // add the wall to the canvas
     renderMouseConstraint(); // add mouse constraint

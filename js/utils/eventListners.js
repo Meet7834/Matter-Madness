@@ -11,6 +11,7 @@ renderDemoBtn.addEventListener("click", () => {
     World.remove(engine.world, defaultBodies); // remove all the bodies from the world using our array
     bodies.length = 0; // empty the bodies array
     defaultBodies.length = 0; // empty the defaultBodies array
+    numberOfBodies = 0; // set the number of bodies to zero
 
 
     addWalls(); // add the wall to the canvas
@@ -66,7 +67,7 @@ addBodyBtn.addEventListener("click", () => {
     // get selected bodyType and body name
     const bodyType = bodyTypeSelect.value;
     let bodyName = document.querySelector("#bodyName").value;
-    if (bodyName.trim() == "") bodyName = bodyType.charAt(0).toUpperCase() + bodyType.slice(1) + " Body #" + (bodies.length + 1);
+    if (bodyName.trim() == "") bodyName = bodyType.charAt(0).toUpperCase() + bodyType.slice(1) + " Body #" + (++numberOfBodies);
 
     // get all the values from the form
     let x = parseFloat(document.querySelector("#xPos").value);
