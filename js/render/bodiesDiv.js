@@ -1,27 +1,28 @@
 const bodiesDiv = document.querySelector("#bodiesDiv");
 
-const addBodyEventListners = (bodyDiv, infoDiv, updateBtn, currBody) => {
-
+const addBodyEventListners = (bodyDiv, infoDiv, updateInfoDiv, updateBtn, currBody) => {
     // to hide/unhide the infoDiv 
     bodyDiv.addEventListener("click", (event) => {
-        if (event.target !== updateBtn) {
+        if ((event.target !== updateBtn) && (updateInfoDiv.classList.contains("hide"))) {
             infoDiv.classList.toggle("hide");
+            if (!updateInfoDiv.classList.contains("hide")) updateInfoDiv.classList.toggle("hide");
         }
     })
+
     if (currBody.type === "composite") return;
     const bodyColor = currBody.render.fillStyle;
     const lineWidth = currBody.render.lineWidth;
     const strokeStyle = currBody.render.strokeStyle;
     // to highlight the selected body
     bodyDiv.addEventListener("mouseover", (event) => {
-        if (!currBody.isStatic) currBody.render.fillStyle = "#08fa00";
+        // if (!currBody.isStatic) currBody.render.fillStyle = "#08fa00";
         currBody.render.strokeStyle = "#fff";
         // console.log(currBody.render.strokeStyle)
-        currBody.render.lineWidth = 5;
+        currBody.render.lineWidth = 7;
     })
     // to restore the original properties
     bodyDiv.addEventListener("mouseout", () => {
-        currBody.render.fillStyle = bodyColor;
+        // currBody.render.fillStyle = bodyColor;
         currBody.render.lineWidth = lineWidth;
         currBody.render.strokeStyle = strokeStyle;
     })
@@ -47,24 +48,104 @@ const createDeleteButton = (bodyToRemove, divToRemove) => {
     return deleteBtn;
 }
 
-const createUpdateButton = (bodyToUpdate, divToUpdate) => {
+const createUpdateButton = (currBody, divToUpdate) => {
     const updateBtn = document.createElement("button");
     updateBtn.innerText = "Update";
 
     // adding event listner to the button
-    updateBtn.addEventListener("click", () => {
+    updateBtn.addEventListener("click", (e) => {
+        const infoDiv = divToUpdate.querySelector(".infoDiv");
+        const updateInfoDiv = divToUpdate.querySelector(".updateInfoDiv");
 
+        if (!(currBody.type === "composite")) {
+            if (!updateInfoDiv.classList.contains("hide")) {
+                const fillStyleInput = updateInfoDiv.querySelector(`#fillStyle${currBody.id}`);
+                const xScaleInput = updateInfoDiv.querySelector(`#xScale${currBody.id}`);
+                const yScaleInput = updateInfoDiv.querySelector(`#yScale${currBody.id}`);
+                const restitutionInput = updateInfoDiv.querySelector(`#restitution${currBody.id}`);
+                const staticInput = updateInfoDiv.querySelector(`#isStatic${currBody.id}`);
+                const frictionInput = updateInfoDiv.querySelector(`#friction${currBody.id}`);
+                const frictionAirInput = updateInfoDiv.querySelector(`#frictionAir${currBody.id}`);
+                const frictionStaticInput = updateInfoDiv.querySelector(`#frictionStatic${currBody.id}`);
+
+                // Update body properties based on user input
+                currBody.render.fillStyle = fillStyleInput.value || currBody.render.fillStyle;
+                Body.scale(currBody, parseFloat(xScaleInput.value) || 1, parseFloat(yScaleInput.value) || 1);
+                currBody.restitution = parseFloat(restitutionInput.value) || 0.1;
+                currBody.isStatic = staticInput.checked;
+                currBody.friction = parseFloat(frictionInput.value) || 0.1;
+                currBody.frictionAir = parseFloat(frictionAirInput.value) || 0.01;
+                currBody.frictionStatic = parseFloat(frictionStaticInput.value) || 0.5;
+
+                generateUpdateDivHTML(currBody, updateInfoDiv, infoDiv);
+            }
+        }
+
+        if (!infoDiv.classList.contains("hide")) infoDiv.classList.toggle("hide");
+        updateInfoDiv.classList.toggle("hide");
     })
 
     return updateBtn;
 }
 
-const createUpdateInfoDiv = (currBody) => {
-    const updateDiv = document.createElement("div");
-    // if (currBody.isStatic) updateDiv.innerHTML += `<label for=${currBody.id + "Angle"}>Angle: ${(currBody.angle * 180 / 3.14).toFixed(1)}</label>`
-    // if (currBody.isStatic) updateDiv.innerHTML += `<input type="number" id=${currBody.id + "Angle"} placeholder="Default: 0"></input>`
+const createCancelBtn = (updateDiv, infoDiv) => {
+    const cancelBtn = document.createElement("button");
+    cancelBtn.innerText = "Cancel";
 
-    return updateDiv;
+    cancelBtn.addEventListener("click", (e) => {
+        updateDiv.classList.toggle("hide");
+        infoDiv.classList.toggle("hide");
+    })
+
+    return cancelBtn;
+}
+
+const generateUpdateDivHTML = (currBody, updateInfoDiv, infoDiv) => {
+    updateInfoDiv.innerHTML = `
+        <label for=${"fillStyle" + currBody.id}>Color:</label>
+        <input type="color" id=${"fillStyle" + currBody.id} value="${currBody.render.fillStyle || "#ffffff"}">
+        <br/>
+        <label for=${"xScale" + currBody.id}>X Scale:</label>
+        <input type="number" id=${"xScale" + currBody.id} value="1">
+        <br/>
+        <label for=${"yScale" + currBody.id}>Y Scale:</label>
+        <input type="number" id=${"yScale" + currBody.id} value="1">
+        <br/>
+        <label for=${"restitution" + currBody.id}>Restitution:</label>
+        <input type="number" id=${"restitution" + currBody.id} value="${currBody.restitution || 0.1}">
+        <br/>
+        <label for=${"isStatic" + currBody.id}>Static:</label>
+        <input type="checkbox" id=${"isStatic" + currBody.id} ${currBody.isStatic ? "checked" : ""}>
+        <br/>
+        <label for=${"friction" + currBody.id}>Friction:</label>
+        <input type="number" id=${"friction" + currBody.id} value="${currBody.friction || 0.1}">
+        <br/>
+        <label for=${"frictionAir" + currBody.id}>Air Friction:</label>
+        <input type="number" id=${"frictionAir" + currBody.id} value="${currBody.frictionAir || 0.01}">
+        <br/>
+        <label for=${"frictionStatic" + currBody.id}>Static Friction:</label>
+        <input type="number" id=${"frictionStatic" + currBody.id} value="${currBody.frictionStatic || 0.5}">
+        <br/>
+        `;
+
+    const cancelBtn = createCancelBtn(updateInfoDiv, infoDiv);
+    updateInfoDiv.appendChild(cancelBtn);
+}
+
+const createUpdateInfoDiv = (currBody, infoDiv) => {
+    const updateInfoDiv = document.createElement("div");
+
+    updateInfoDiv.classList.add("updateInfoDiv");
+    updateInfoDiv.classList.add("hide");
+
+    if (currBody.type === "composite") {
+        updateInfoDiv.innerHTML += "Can't update composite types."
+        return updateInfoDiv;
+    }
+
+    generateUpdateDivHTML(currBody, updateInfoDiv, infoDiv);
+
+    return updateInfoDiv;
 }
 
 const createInfoDiv = (currBody) => {
@@ -101,16 +182,15 @@ const createBodyDiv = (currBody) => {
     bodyDiv.classList.add("bodyDiv");
 
     const infoDiv = createInfoDiv(currBody);
-    const updateInfoDiv = createUpdateInfoDiv(currBody);
+    const updateInfoDiv = createUpdateInfoDiv(currBody, infoDiv);
     const deleteBtn = createDeleteButton(currBody, bodyDiv);
     const updateBtn = createUpdateButton(currBody, bodyDiv);
 
     // event listners:
-    addBodyEventListners(bodyDiv, infoDiv, updateBtn, currBody);
-
     assembleDiv(bodyDiv, infoDiv, updateInfoDiv, updateBtn, deleteBtn);
-}
+    addBodyEventListners(bodyDiv, infoDiv, updateInfoDiv, updateBtn, currBody);
 
+}
 
 const renderBodiesDiv = () => {
     bodiesDiv.innerHTML = "";
