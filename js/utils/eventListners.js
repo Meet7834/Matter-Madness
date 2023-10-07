@@ -131,7 +131,6 @@ addBodyBtn.addEventListener("click", () => {
         label: bodyName,
         angle: angle,
         friction: friction, frictionAir: frictionAir, frictionStatic: frictionStatic,
-        isStatic: isStatic,
         render: {
             fillStyle: color,
             lineWidth: lineWidth,
@@ -146,6 +145,11 @@ addBodyBtn.addEventListener("click", () => {
         newBody = Bodies.circle(x, y, radius, options);
     } else if (bodyType === "polygon") {
         newBody = Bodies.polygon(x, y, sides, radius, options);
+    }
+
+    if(isStatic) {
+        newBody.isStatic = true;
+        newBody.render.fillStyle = "#14151F"
     }
 
     // Add the new body to the simulation

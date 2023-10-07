@@ -10,20 +10,18 @@ const addBodyEventListners = (bodyDiv, infoDiv, updateInfoDiv, updateBtn, currBo
     })
 
     if (currBody.type === "composite") return;
-    const bodyColor = currBody.render.fillStyle;
     const lineWidth = currBody.render.lineWidth;
     const strokeStyle = currBody.render.strokeStyle;
     // to highlight the selected body
     bodyDiv.addEventListener("mouseover", (event) => {
-        // if (!currBody.isStatic) currBody.render.fillStyle = "#08fa00";
         currBody.render.strokeStyle = "#fff";
         // console.log(currBody.render.strokeStyle)
-        currBody.render.lineWidth = 7;
+        currBody.render.lineWidth += 5;
     })
     // to restore the original properties
     bodyDiv.addEventListener("mouseout", () => {
         // currBody.render.fillStyle = bodyColor;
-        currBody.render.lineWidth = lineWidth;
+        currBody.render.lineWidth = (currBody.isStatic) ? 5 : 0;
         currBody.render.strokeStyle = strokeStyle;
     })
 }
@@ -84,12 +82,15 @@ const createUpdateButton = (currBody, divToUpdate) => {
                 Body.scale(currBody, xScaleInput || 1, yScaleInput || 1);
                 currBody.restitution = restitutionInput;
                 currBody.isStatic = staticInput.checked;
+                currBody.render.lineWidth = (currBody.isStatic) ? 5 : 0;
                 currBody.friction = frictionInput;
                 currBody.frictionAir = frictionAirInput;
                 currBody.frictionStatic = frictionStaticInput;
 
+                if (!staticInput.checked && currBody.render.fillStyle === "#14151f") currBody.render.fillStyle = "#ffffff";
                 generateUpdateDivHTML(currBody, updateInfoDiv, infoDiv);
                 generateInfoDivHTML(currBody, infoDiv);
+                currBody.render.lineWidth = 5;
             }
         }
 
@@ -147,7 +148,7 @@ const generateUpdateDivHTML = (currBody, updateInfoDiv, infoDiv) => {
 }
 
 const generateInfoDivHTML = (currBody, infoDiv) => {
-    infoDiv.innerHTML = `<p>ID: ${currBody.id}</p>`;
+    infoDiv.innerHTML = "";
     if (currBody.type == "body") {
         infoDiv.innerHTML += `<p>Static: ${currBody.isStatic}</p>`
         if (currBody.isStatic) infoDiv.innerHTML += `<p>Angle: ${(currBody.angle * 180 / 3.14).toFixed(1)}</p>`
