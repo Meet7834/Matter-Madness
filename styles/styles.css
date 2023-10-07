@@ -19,11 +19,14 @@ footer{
     height: 10vh;
     width: 100vw;
     background-color:bisque;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
 }
 
 .navbar{
     display: flex;
-    justify-content:space-between;
+    justify-content:center;
 }
 
 .main-container{
@@ -36,6 +39,9 @@ footer{
 .sidebar-right{
     width: 20%;
     padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .sidebar-left{
@@ -61,6 +67,12 @@ footer{
     border: 1px solid black;
     margin-bottom: 0.4rem;
     margin-right: 0.4rem;
+}
+
+.clearPlaygroundDiv{
+    display: flex;
+    padding-right: 1rem;
+    justify-content: end;    
 }
 
 .hide{

@@ -28,5 +28,5 @@
     - If the user adds too many bodies on the canvas then the left sidebar will become scrollable.
     - If the user clicks the div then it will show the information about respective body.
     - user can delete the body by clicking the delete button on respective div.
-    - update the body using update button.
+    - update the body using update button (color, restituation, friction).
     - if the user hovers over the div then the body responding to the div will be highlighted on the canvas.
