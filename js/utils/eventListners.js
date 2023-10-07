@@ -110,20 +110,22 @@ addBodyBtn.addEventListener("click", () => {
         frictionAir = parseFloat(document.querySelector("#frictionAirInput").value);
         frictionStatic = parseFloat(document.querySelector("#frictionStaticInput").value);
     }
-    
-    // if the user didn't input friction values
-    if (isNaN(friction)) friction = 0.1;
-    if (isNaN(frictionAir)) frictionAir = 0.01;
-    if (isNaN(frictionStatic)) frictionStatic = 0.5;
-    if (isNaN(restitution)) restitution = 0.1;
-    
-    // if the user put friction values more than 1
+
+    // if the user didn't put any value
+    if (isNaN(restitution) || restitution < 0) restitution = 0.1;
+    if (isNaN(friction) || friction < 0) friction = 0.1;
+    if (isNaN(frictionAir) || frictionAir < 0) frictionAir = 0.01;
+    if (isNaN(frictionStatic) || frictionStatic < 0) frictionStatic = 0.5;
+
+    // if the user put friction and restitution values to be more than 1
+    if (restitution > 1) restitution = 1;
     if (friction > 1) friction = 1;
     if (frictionAir > 1) frictionAir = 1;
     if (frictionStatic > 1) frictionStatic = 1;
-    if (restitution > 1) restitution = 1;
 
     // Create the body based on the selected type and dimensions
+    let lineWidth = 0, strokeStyle = null;
+    if (isStatic) lineWidth = 5, strokeStyle = "#ffffff";
     let newBody;
     let options = {
         label: bodyName,
@@ -131,11 +133,12 @@ addBodyBtn.addEventListener("click", () => {
         friction: friction, frictionAir: frictionAir, frictionStatic: frictionStatic,
         isStatic: isStatic,
         render: {
-            fillStyle: color
+            fillStyle: color,
+            lineWidth: lineWidth,
+            strokeStyle: strokeStyle
         },
         restitution: restitution
     }
-    console.log(options);
 
     if (bodyType === "rectangle") {
         newBody = Bodies.rectangle(x, y, width, height, options);
@@ -144,7 +147,6 @@ addBodyBtn.addEventListener("click", () => {
     } else if (bodyType === "polygon") {
         newBody = Bodies.polygon(x, y, sides, radius, options);
     }
-    console.log(newBody);
 
     // Add the new body to the simulation
     if (newBody != null) {

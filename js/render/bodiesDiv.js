@@ -57,25 +57,37 @@ const createUpdateButton = (currBody, divToUpdate) => {
         let infoDiv = divToUpdate.querySelector(".infoDiv");
         const updateInfoDiv = divToUpdate.querySelector(".updateInfoDiv");
 
-        if (!(currBody.type === "composite")) {
+        if ((currBody.type === "body")) {
             if (!updateInfoDiv.classList.contains("hide")) {
-                const fillStyleInput = updateInfoDiv.querySelector(`#fillStyle${currBody.id}`);
-                const xScaleInput = updateInfoDiv.querySelector(`#xScale${currBody.id}`);
-                const yScaleInput = updateInfoDiv.querySelector(`#yScale${currBody.id}`);
-                const restitutionInput = updateInfoDiv.querySelector(`#restitution${currBody.id}`);
+                const fillStyleInput = updateInfoDiv.querySelector(`#fillStyle${currBody.id}`).value;
+                const xScaleInput = parseFloat(updateInfoDiv.querySelector(`#xScale${currBody.id}`).value);
+                const yScaleInput = parseFloat(updateInfoDiv.querySelector(`#yScale${currBody.id}`).value);
+                let restitutionInput = parseFloat(updateInfoDiv.querySelector(`#restitution${currBody.id}`).value);
                 const staticInput = updateInfoDiv.querySelector(`#isStatic${currBody.id}`);
-                const frictionInput = updateInfoDiv.querySelector(`#friction${currBody.id}`);
-                const frictionAirInput = updateInfoDiv.querySelector(`#frictionAir${currBody.id}`);
-                const frictionStaticInput = updateInfoDiv.querySelector(`#frictionStatic${currBody.id}`);
+                let frictionInput = parseFloat(updateInfoDiv.querySelector(`#friction${currBody.id}`).value);
+                let frictionAirInput = parseFloat(updateInfoDiv.querySelector(`#frictionAir${currBody.id}`).value);
+                let frictionStaticInput = parseFloat(updateInfoDiv.querySelector(`#frictionStatic${currBody.id}`).value);
+
+                if (isNaN(restitutionInput) || restitutionInput < 0) restitutionInput = 0.1;
+                if (isNaN(frictionInput) || frictionInput < 0) frictionInput = 0.1;
+                if (isNaN(frictionAirInput) || frictionAirInput < 0) frictionAirInput = 0.01;
+                if (isNaN(frictionStaticInput) || frictionStaticInput < 0) frictionStaticInput = 0.5;
+
+                // if the user put friction values more than 1
+                if (restitutionInput > 1) restitutionInput = 1;
+                if (frictionInput > 1) frictionInput = 1;
+                if (frictionAirInput > 1) frictionAirInput = 1;
+                if (frictionStaticInput > 1) frictionStaticInput = 1;
 
                 // Update body properties based on user input
                 currBody.render.fillStyle = fillStyleInput.value || currBody.render.fillStyle;
-                Body.scale(currBody, parseFloat(xScaleInput.value) || 1, parseFloat(yScaleInput.value) || 1);
-                currBody.restitution = parseFloat(restitutionInput.value) || 0.1;
+                Body.scale(currBody, xScaleInput || 1, yScaleInput || 1);
+                currBody.restitution = restitutionInput;
                 currBody.isStatic = staticInput.checked;
-                currBody.friction = parseFloat(frictionInput.value) || 0.1;
-                currBody.frictionAir = parseFloat(frictionAirInput.value) || 0.01;
-                currBody.frictionStatic = parseFloat(frictionStaticInput.value) || 0.5;
+                currBody.friction = frictionInput;
+                currBody.frictionAir = frictionAirInput;
+                currBody.frictionStatic = frictionStaticInput;
+                console.log(currBody);
 
                 generateUpdateDivHTML(currBody, updateInfoDiv, infoDiv);
                 generateInfoDivHTML(currBody, infoDiv);
@@ -101,7 +113,8 @@ const createCancelBtn = (updateDiv, infoDiv) => {
 }
 
 const generateUpdateDivHTML = (currBody, updateInfoDiv, infoDiv) => {
-    updateInfoDiv.innerHTML = `
+    if (currBody.type === "body") {
+        updateInfoDiv.innerHTML = `
         <label for=${"fillStyle" + currBody.id}>Color:</label>
         <input type="color" id=${"fillStyle" + currBody.id} value="${currBody.render.fillStyle || "#ffffff"}">
         <br/>
@@ -127,9 +140,11 @@ const generateUpdateDivHTML = (currBody, updateInfoDiv, infoDiv) => {
         <input type="number" id=${"frictionStatic" + currBody.id} value="${currBody.frictionStatic || 0.5}">
         <br/>
         `;
-
-    const cancelBtn = createCancelBtn(updateInfoDiv, infoDiv);
-    updateInfoDiv.appendChild(cancelBtn);
+        const cancelBtn = createCancelBtn(updateInfoDiv, infoDiv);
+        updateInfoDiv.appendChild(cancelBtn);
+    } else {
+        updateInfoDiv.innerHTML = "Can't update constraints."
+    }
 }
 
 const generateInfoDivHTML = (currBody, infoDiv) => {
