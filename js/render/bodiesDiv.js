@@ -80,14 +80,13 @@ const createUpdateButton = (currBody, divToUpdate) => {
                 if (frictionStaticInput > 1) frictionStaticInput = 1;
 
                 // Update body properties based on user input
-                currBody.render.fillStyle = fillStyleInput.value || currBody.render.fillStyle;
+                currBody.render.fillStyle = fillStyleInput || currBody.render.fillStyle;
                 Body.scale(currBody, xScaleInput || 1, yScaleInput || 1);
                 currBody.restitution = restitutionInput;
                 currBody.isStatic = staticInput.checked;
                 currBody.friction = frictionInput;
                 currBody.frictionAir = frictionAirInput;
                 currBody.frictionStatic = frictionStaticInput;
-                console.log(currBody);
 
                 generateUpdateDivHTML(currBody, updateInfoDiv, infoDiv);
                 generateInfoDivHTML(currBody, infoDiv);
