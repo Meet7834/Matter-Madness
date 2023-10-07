@@ -54,7 +54,7 @@ const createUpdateButton = (currBody, divToUpdate) => {
 
     // adding event listner to the button
     updateBtn.addEventListener("click", (e) => {
-        const infoDiv = divToUpdate.querySelector(".infoDiv");
+        let infoDiv = divToUpdate.querySelector(".infoDiv");
         const updateInfoDiv = divToUpdate.querySelector(".updateInfoDiv");
 
         if (!(currBody.type === "composite")) {
@@ -78,13 +78,13 @@ const createUpdateButton = (currBody, divToUpdate) => {
                 currBody.frictionStatic = parseFloat(frictionStaticInput.value) || 0.5;
 
                 generateUpdateDivHTML(currBody, updateInfoDiv, infoDiv);
+                generateInfoDivHTML(currBody, infoDiv);
             }
         }
 
         if (!infoDiv.classList.contains("hide")) infoDiv.classList.toggle("hide");
         updateInfoDiv.classList.toggle("hide");
     })
-
     return updateBtn;
 }
 
@@ -132,6 +132,19 @@ const generateUpdateDivHTML = (currBody, updateInfoDiv, infoDiv) => {
     updateInfoDiv.appendChild(cancelBtn);
 }
 
+const generateInfoDivHTML = (currBody, infoDiv) => {
+    infoDiv.innerHTML = `<p>ID: ${currBody.id}</p>`;
+    if (currBody.type == "body") {
+        infoDiv.innerHTML += `<p>Static: ${currBody.isStatic}</p>`
+        if (currBody.isStatic) infoDiv.innerHTML += `<p>Angle: ${(currBody.angle * 180 / 3.14).toFixed(1)}</p>`
+
+        infoDiv.innerHTML += `<p>Restitution: ${currBody.restitution}</p>`;
+        infoDiv.innerHTML += `<p>Friction: ${currBody.friction}</p>`
+        infoDiv.innerHTML += `<p>Air Friction: ${currBody.frictionAir}</p>`
+        infoDiv.innerHTML += `<p>Static Friction: ${currBody.frictionStatic}</p>`
+    }
+}
+
 const createUpdateInfoDiv = (currBody, infoDiv) => {
     const updateInfoDiv = document.createElement("div");
 
@@ -151,15 +164,7 @@ const createUpdateInfoDiv = (currBody, infoDiv) => {
 const createInfoDiv = (currBody) => {
     const infoDiv = document.createElement("div");
 
-    infoDiv.innerHTML += `<p>ID: ${currBody.id}</p>`;
-    if (currBody.type == "body") {
-        infoDiv.innerHTML += `<p>Static: ${currBody.isStatic}</p>`
-        if (currBody.isStatic) infoDiv.innerHTML += `<p>Angle: ${(currBody.angle * 180 / 3.14).toFixed(1)}</p>`
-
-        infoDiv.innerHTML += `<p>Friction: ${currBody.friction}</p>`
-        infoDiv.innerHTML += `<p>Air Friction: ${currBody.frictionAir}</p>`
-        infoDiv.innerHTML += `<p>Static Friction: ${currBody.frictionStatic}</p>`
-    }
+    generateInfoDivHTML(currBody, infoDiv);
 
     infoDiv.classList.add("infoDiv");
     infoDiv.classList.add("hide");

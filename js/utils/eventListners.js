@@ -101,23 +101,27 @@ addBodyBtn.addEventListener("click", () => {
     if (radius > canvasWidth / 2 || radius > canvasHeight / 2) radius = (Math.min(canvasHeight, canvasWidth) / 2) - 15;
 
     // if advanced options is checked
-    let angle = 0, friction = 0.1, frictionAir = 0.01, frictionStatic = 0.5;
+    let color = null, restitution = 0.1, angle = 0, friction = 0.1, frictionAir = 0.01, frictionStatic = 0.5;
     if (showAdvancedCheck.checked) {
+        color = document.querySelector("#fillStyleInput").value;
+        restitution = parseFloat(document.querySelector("#restitutionInput").value);
         angle = (parseFloat(document.querySelector("#angleInput").value) / 180 * 3.14) || 0;
         friction = parseFloat(document.querySelector("#frictionInput").value);
         frictionAir = parseFloat(document.querySelector("#frictionAirInput").value);
         frictionStatic = parseFloat(document.querySelector("#frictionStaticInput").value);
     }
-
+    
     // if the user didn't input friction values
     if (isNaN(friction)) friction = 0.1;
     if (isNaN(frictionAir)) frictionAir = 0.01;
     if (isNaN(frictionStatic)) frictionStatic = 0.5;
-
+    if (isNaN(restitution)) restitution = 0.1;
+    
     // if the user put friction values more than 1
     if (friction > 1) friction = 1;
     if (frictionAir > 1) frictionAir = 1;
     if (frictionStatic > 1) frictionStatic = 1;
+    if (restitution > 1) restitution = 1;
 
     // Create the body based on the selected type and dimensions
     let newBody;
@@ -127,12 +131,11 @@ addBodyBtn.addEventListener("click", () => {
         friction: friction, frictionAir: frictionAir, frictionStatic: frictionStatic,
         isStatic: isStatic,
         render: {
-            // fillStyle: null
+            fillStyle: color
         },
-        // restitution: 0.2
-        // restitution: 
+        restitution: restitution
     }
-    // if (isStatic) options.render.fillStyle = "#fff";
+    console.log(options);
 
     if (bodyType === "rectangle") {
         newBody = Bodies.rectangle(x, y, width, height, options);
@@ -141,6 +144,7 @@ addBodyBtn.addEventListener("click", () => {
     } else if (bodyType === "polygon") {
         newBody = Bodies.polygon(x, y, sides, radius, options);
     }
+    console.log(newBody);
 
     // Add the new body to the simulation
     if (newBody != null) {
