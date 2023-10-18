@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam&family=Onest&family=Quicksand&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -9,24 +11,32 @@ body {
     height: 100vh;
     width: 100vw;
     font-family: Arial, sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 header {
     height: 10%;
     width: 100%;
-    background-color: bisque;
+    background-color: #FBE7C6;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Onest', cursive;
 }
 
 footer {
     height: 10vh;
     width: 100vw;
-    background-color: bisque;
+    background-color: #FBE7C6;
     display: flex;
     justify-content: space-between;
     padding: 1rem;
+    font-family: 'Onest', cursive;
+}
+
+footer a {
+    text-decoration: none;
+    color: #04080F;
 }
 
 footer button {
@@ -41,7 +51,7 @@ footer button {
 label {
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: #04080F;
 }
 
 input[type="text"],
@@ -54,13 +64,29 @@ input[type="checkbox"] {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 input[type="color"] {
-    width: 8rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 50%;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
-input[type="checkbox"]{
+
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 15px;
+    border: 2px solid #04080F;
+}
+
+input[type="color"]::-moz-color-swatch {
+    border-radius: 15px;
+    border: 2px solid #04080F;
+}
+
+input[type="checkbox"] {
     height: 1.2rem;
 }
 
@@ -70,12 +96,14 @@ button {
     margin-bottom: 1rem;
     border-radius: 4px;
     cursor: pointer;
+    background-color: #7BDFF2;
+    font-family: 'Onest', sans-serif;
 }
 
 .navbar h1 {
     font-size: 2.2rem;
     font-weight: bold;
-    color: #333;
+    color: #04080F;
 }
 
 .navbar {
@@ -87,7 +115,7 @@ button {
     height: 80%;
     width: 100%;
     display: flex;
-    background-color: bisque;
+    background-color: #FBE7C6;
 }
 
 .sidebar-left {
@@ -99,7 +127,7 @@ button {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 0.55rem;
-    color: #333;
+    color: #04080F;
 }
 
 .sidebar-left button {
@@ -142,22 +170,25 @@ button {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: #04080F;
 }
 
-.align-all-the-items div{
+.align-all-the-items div {
     display: flex;
     width: 95%;
     justify-content: space-between;
     align-items: center;
 }
-.align-all-the-items div label{
+
+.align-all-the-items div label {
     width: 50%;
 }
-.align-all-the-items div input{
+
+.align-all-the-items div input {
     width: 50%;
 }
-.align-all-the-items div button{
+
+.align-all-the-items div button {
     margin-right: 0;
 }
 
@@ -181,10 +212,15 @@ button {
 }
 
 .bodyDiv {
-    border: 1px solid black;
+    border: 2px solid #333;
+    border-radius: 0.4rem;
     margin-bottom: 0.4rem;
     margin-right: 0.4rem;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    padding: 0.5rem;
+}
+
+.bodyDiv h4 {
+    margin-bottom: 0.25rem;
 }
 
 .clearPlaygroundDiv {
@@ -199,5 +235,5 @@ button {
 
 #canvas {
     width: 65%;
-    border: 2px solid black;
+    border: 2px solid #04080F;
 }
