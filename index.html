@@ -39,75 +39,105 @@
             <div class="sidebar-right-scroll">
 
                 <h2>Add Body</h2>
+                <div class="align-all-the-items">
+                    <div>
+                        <label for="bodyTypeSelect">Body Type:</label>
+                        <select id="bodyTypeSelect">
+                            <option value="rectangle">Rectangle</option>
+                            <option value="circle">Circle</option>
+                            <option value="polygon">Polygon</option>
+                        </select>
+                    </div>
 
-                <label for="bodyTypeSelect">Select Body Type:</label>
-                <select id="bodyTypeSelect">
-                    <option value="rectangle">Rectangle</option>
-                    <option value="circle">Circle</option>
-                    <option value="polygon">Polygon</option>
-                </select>
+                    <div>
+                        <label for="bodyName">Body Name:</label>
+                        <input type="text" id="bodyName" placeholder="Body Name">
+                        <br>
+                    </div>
 
-                <div class="">
+                    <div>
+                        <label for="xPos">X Position:</label>
+                        <input type="number" id="xPos" placeholder="X Position" >
+                        <br>
+                    </div>
 
-                    <label for="bodyName">Body Name:</label>
-                    <input type="text" id="bodyName" placeholder="Body Name">
-                    <br>
-                    <label for="xPos">X Position:</label>
-                    <input type="number" id="xPos" placeholder="Enter X Position">
-                    <br>
-                    <label for="yPos">Y Position:</label>
-                    <input type="number" id="yPos" placeholder="Enter Y Position">
-                    <br>
+                    <div>
+                        <label for="yPos">Y Position:</label>
+                        <input type="number" id="yPos" placeholder="Y Position">
+                        <br>
+                    </div>
 
                     <div id="widthInputDiv">
                         <label for="widthInput">Width:</label>
-                        <input type="number" id="widthInput" placeholder="Enter Width">
+                        <input type="number" id="widthInput" placeholder="Width">
                     </div>
 
                     <div id="heightInputDiv">
                         <label for="heightInput">Height:</label>
-                        <input type="number" id="heightInput" placeholder="Enter Height">
+                        <input type="number" id="heightInput" placeholder="Height">
                     </div>
 
                     <div class="hide" id="sidesInputDiv">
                         <label for="sidesInput">Sides:</label>
-                        <input type="number" id="sidesInput" placeholder="Enter Sides">
+                        <input type="number" id="sidesInput" placeholder="Sides">
                     </div>
 
                     <div class="hide" id="radiusInputDiv">
                         <label for="radiusInput">Radius:</label>
-                        <input type="number" id="radiusInput" placeholder="Enter Radius">
+                        <input type="number" id="radiusInput" placeholder="Radius">
                     </div>
 
                     <div>
                         <label for="isStaticInput">Static:</label>
-                        <input type="checkbox" id="isStaticInput" placeholder="Default: False ">
-                    </div>
-
-                    <!-- advanced options: angle, friction, firing: on-->
-                    <label for="advancedOptionsInput">Advanced Options</label>
-                    <input type="checkbox" name="advancedOptionsInput" id="advancedOptionsInput">
-                    <div class="hide" id="advancedOptionsDiv">
-                        <label for="fillStyleInput">Color</label>
-                        <input type="color" id="fillStyleInput" value="#F5D259">
-                        <br>
-                        <label for="restitutionInput">Restitution</label>
-                        <input type="number" id="restitutionInput" placeholder="0.1">
-                        <br>
-                        <label for="angleInput">Angle(in Degree):</label>
-                        <input type="number" id="angleInput" placeholder="Default: 0">
-                        <br>
-                        <label for="frictionInput">Friction:</label>
-                        <input type="number" id="frictionInput" placeholder="0.1">
-                        <br>
-                        <label for="frictionAirInput">Air Friction:</label>
-                        <input type="number" id="frictionAirInput" placeholder="0.01">
-                        <br>
-                        <label for="frictionStaticInput">Static Friction:</label>
-                        <input type="number" id="frictionStaticInput" placeholder="0.5">
+                        <input type="checkbox" id="isStaticInput">
                     </div>
 
                 </div>
+                <!-- advanced options: angle, friction, firing: on-->
+                <div class="">
+
+                    <div class="align-all-the-items">
+                        <div>
+                            <label for="advancedOptionsInput">Advanced Options</label>
+                            <input type="checkbox" name="advancedOptionsInput" id="advancedOptionsInput">
+                        </div>
+                    </div>
+
+                    <div class="hide align-all-the-items" id="advancedOptionsDiv">
+                        <div>
+                            <label for="fillStyleInput">Color</label>
+                            <input type="color" id="fillStyleInput" value="#F5D259">
+                            <br>
+                        </div>
+                        <div>
+                            <label for="restitutionInput">Restitution</label>
+                            <input type="number" id="restitutionInput" placeholder="0.1">
+                            <br>
+                        </div>
+                        <div>
+                            <label for="angleInput">Angle(in Degree):</label>
+                            <input type="number" id="angleInput" placeholder="0">
+                            <br>
+                        </div>
+                        <div>
+                            <label for="frictionInput">Friction:</label>
+                            <input type="number" id="frictionInput" placeholder="0.1">
+                            <br>
+                        </div>
+                        <div>
+                            <label for="frictionAirInput">Air Friction:</label>
+                            <input type="number" id="frictionAirInput" placeholder="0.01">
+                            <br>
+                        </div>
+                        <div>
+                            <label for="frictionStaticInput">Static Friction:</label>
+                            <input type="number" id="frictionStaticInput" placeholder="0.5">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="align-all-the-items">
                 <div>
                     <button id="clearInputBtn">Clear Inputs</button>
                     <button id="addBodyBtn">Add Body</button>

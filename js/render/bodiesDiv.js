@@ -115,30 +115,47 @@ const createCancelBtn = (updateDiv, infoDiv) => {
 const generateUpdateDivHTML = (currBody, updateInfoDiv, infoDiv) => {
     if (currBody.type === "body") {
         updateInfoDiv.innerHTML = `
-        <label for=${"fillStyle" + currBody.id}>Color:</label>
-        <input type="color" id=${"fillStyle" + currBody.id} value="${currBody.render.fillStyle || "#ffffff"}">
-        <br/>
-        <label for=${"xScale" + currBody.id}>X Scale:</label>
-        <input type="number" id=${"xScale" + currBody.id} placeholder="1">
-        <br/>
-        <label for=${"yScale" + currBody.id}>Y Scale:</label>
-        <input type="number" id=${"yScale" + currBody.id} placeholder="1">
-        <br/>
-        <label for=${"restitution" + currBody.id}>Restitution:</label>
-        <input type="number" id=${"restitution" + currBody.id} placeholder="${currBody.restitution || 0.1}">
-        <br/>
-        <label for=${"isStatic" + currBody.id}>Static:</label>
-        <input type="checkbox" id=${"isStatic" + currBody.id} ${currBody.isStatic ? "checked" : ""}>
-        <br/>
-        <label for=${"friction" + currBody.id}>Friction:</label>
-        <input type="number" id=${"friction" + currBody.id} placeholder="${currBody.friction || 0.1}">
-        <br/>
-        <label for=${"frictionAir" + currBody.id}>Air Friction:</label>
-        <input type="number" id=${"frictionAir" + currBody.id} placeholder="${currBody.frictionAir || 0.01}">
-        <br/>
-        <label for=${"frictionStatic" + currBody.id}>Static Friction:</label>
-        <input type="number" id=${"frictionStatic" + currBody.id} placeholder="${currBody.frictionStatic || 0.5}">
-        <br/>
+        <div class="align-all-the-items" style="width:90%">
+        <div> 
+            <label for=${"fillStyle" + currBody.id}>Color:</label>
+            <input type="color" id=${"fillStyle" + currBody.id} value="${currBody.render.fillStyle || "#ffffff"}">
+            <br/>
+        </div>
+        <div> 
+            <label for=${"xScale" + currBody.id}>X Scale:</label>
+            <input type="number" id=${"xScale" + currBody.id} placeholder="1">
+            <br/>
+        </div>
+        <div>
+            <label for=${"yScale" + currBody.id}>Y Scale:</label>
+            <input type="number" id=${"yScale" + currBody.id} placeholder="1">
+            <br/>
+        </div>
+        <div>
+            <label for=${"restitution" + currBody.id}>Restitution:</label>
+            <input type="number" id=${"restitution" + currBody.id} placeholder="${currBody.restitution || 0.1}">
+            <br/>
+        </div>
+        <div>
+            <label for=${"isStatic" + currBody.id}>Static:</label>
+            <input type="checkbox" id=${"isStatic" + currBody.id} ${currBody.isStatic ? "checked" : ""}>
+            <br/>
+        </div>
+        <div>
+            <label for=${"friction" + currBody.id}>Friction:</label>
+            <input type="number" id=${"friction" + currBody.id} placeholder="${currBody.friction || 0.1}">
+            <br/>
+        </div>
+        <div>
+            <label for=${"frictionAir" + currBody.id}>Air Friction:</label>
+            <input type="number" id=${"frictionAir" + currBody.id} placeholder="${currBody.frictionAir || 0.01}">
+            <br/>
+        </div>
+        <div>
+            <label for=${"frictionStatic" + currBody.id}>Static Friction:</label>
+            <input type="number" id=${"frictionStatic" + currBody.id} placeholder="${currBody.frictionStatic || 0.5}">
+            <br/>
+        </div>
         `;
         const cancelBtn = createCancelBtn(updateInfoDiv, infoDiv);
         updateInfoDiv.appendChild(cancelBtn);
