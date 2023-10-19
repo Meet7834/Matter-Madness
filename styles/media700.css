@@ -1,5 +1,10 @@
 @media (max-width: 700px) {
-
+    .mobile-warning {
+        padding: 0px 5px;
+        display: block;
+        height: 4%;
+        background-color: #FBE7C6;
+    }
     .main-container {
         display: flex;
         justify-content: center;
@@ -25,12 +30,13 @@
     }
 
     header {
+        height: 6%;
         display: flex;
         justify-content: space-between;
-        padding: 5px;
+        padding: 3px;
     }
 
-    header > div.navbar > h1 {
+    header>div.navbar>h1 {
         font-size: 20px;
     }
 
@@ -38,7 +44,7 @@
         display: block;
     }
 
-    body > header > div:nth-child(2) > h2 > a {
+    body>header>div:nth-child(2)>h2>a {
         text-decoration: none;
         color: #333;
     }

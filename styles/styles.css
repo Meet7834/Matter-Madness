@@ -100,7 +100,7 @@ button {
     font-family: 'Onest', sans-serif;
 }
 
-header > div:nth-child(2) {
+header>div:nth-child(2) {
     display: none;
 }
 
@@ -125,6 +125,10 @@ footer>div:nth-child(3) {
 .navbar {
     display: flex;
     justify-content: center;
+}
+
+.mobile-warning {
+    display: none;
 }
 
 .main-container {
