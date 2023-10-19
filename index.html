@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/media900.css">
+    <link rel="stylesheet" href="./styles/media700.css">
     <title>Matter Madness</title>
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
@@ -15,6 +17,9 @@
     <header>
         <div class="navbar">
             <h1>Matter Madness</h1>
+        </div>
+        <div>
+            <h2><a href="https://github.com/Meet7834/Matter-Madness">Github</a></h2>
         </div>
     </header>
 
@@ -42,7 +47,7 @@
                 <div class="align-all-the-items">
                     <div>
                         <label for="bodyTypeSelect">Body Type:</label>
-                        <select id="bodyTypeSelect">
+                        <select id="bodyTypeSelect" class="bodyTypeSelect">
                             <option value="rectangle">Rectangle</option>
                             <option value="circle">Circle</option>
                             <option value="polygon">Polygon</option>
@@ -52,19 +57,16 @@
                     <div>
                         <label for="bodyName">Body Name:</label>
                         <input type="text" id="bodyName" placeholder="Body Name">
-                        <br>
                     </div>
 
                     <div>
                         <label for="xPos">X Position:</label>
-                        <input type="number" id="xPos" placeholder="X Position" >
-                        <br>
+                        <input type="number" id="xPos" placeholder="X Position">
                     </div>
 
                     <div>
                         <label for="yPos">Y Position:</label>
                         <input type="number" id="yPos" placeholder="Y Position">
-                        <br>
                     </div>
 
                     <div id="widthInputDiv">
@@ -107,27 +109,22 @@
                         <div>
                             <label for="fillStyleInput">Color:</label>
                             <input type="color" id="fillStyleInput" value="#F5D259">
-                            <br>
                         </div>
                         <div>
                             <label for="restitutionInput">Restitution: </label>
                             <input type="number" id="restitutionInput" placeholder="0.1">
-                            <br>
                         </div>
                         <div>
                             <label for="angleInput">Angle:</label>
                             <input type="number" id="angleInput" placeholder="0">
-                            <br>
                         </div>
                         <div>
                             <label for="frictionInput">Friction:</label>
                             <input type="number" id="frictionInput" placeholder="0.1">
-                            <br>
                         </div>
                         <div>
                             <label for="frictionAirInput">Air Friction:</label>
                             <input type="number" id="frictionAirInput" placeholder="0.01">
-                            <br>
                         </div>
                         <div>
                             <label for="frictionStaticInput">Static Friction:</label>
@@ -140,11 +137,11 @@
             <div class="align-all-the-items">
                 <div>
                     <button id="clearInputBtn">Clear Inputs</button>
-                    <button id="addBodyBtn">Add Body</button>
+                    <button class="addBodyBtn">Add Body</button>
                 </div>
             </div>
             <div class="clearPlaygroundDiv">
-                <button id="clearPlaygroundBtn">Clear Playground</button>
+                <button class="clearPlaygroundBtn">Clear Playground</button>
             </div>
 
         </div>
@@ -153,14 +150,23 @@
 
     <!-- footer -->
     <footer>
-        <div>
-            <button id="helpBtn">Help!</button>
+        <div class="renderDemoBtn">
+            <button id="renderDemoBtn">Demo</button>
         </div>
-        <div class="">
+        <div>
             <h2><a href="https://github.com/Meet7834/Matter-Madness">Github</a></h2>
         </div>
         <div>
-            <button id="renderDemoBtn">Demo</button>
+            <select title="bodyType" id="bodyTypeSelect2" class="bodyTypeSelect">
+                <option value="rectangle">Rectangle</option>
+                <option value="circle">Circle</option>
+                <option value="polygon">Triangle</option>
+            </select>
+        </div>
+        <button class="addBodyBtn">Add Body</button>
+        <button class="clearPlaygroundBtn">Clear</button>
+        <div>
+            <a href="./html/help.html"><button id="helpBtn">Help!</button></a>
         </div>
     </footer>
 

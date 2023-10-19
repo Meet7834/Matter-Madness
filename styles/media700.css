@@ -1,0 +1,84 @@
+@media (max-width: 700px) {
+
+    .main-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .sidebar-left {
+        display: none;
+    }
+
+    .sidebar-right {
+        display: none;
+    }
+
+    .sidebar-right button {
+        width: 7rem;
+        height: 3.5rem;
+    }
+
+    .sidebar-right-scroll {
+        display: none;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    header > div.navbar > h1 {
+        font-size: 20px;
+    }
+
+    header>div:nth-child(2) {
+        display: block;
+    }
+
+    body > header > div:nth-child(2) > h2 > a {
+        text-decoration: none;
+        color: #333;
+    }
+
+
+    footer {
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    footer button {
+        display: block;
+    }
+
+    footer select {
+        width: 6.5rem;
+        height: 3.5rem;
+    }
+
+    footer>div:nth-child(2) {
+        display: none;
+    }
+
+    footer>div:nth-child(3) {
+        display: block;
+    }
+
+
+    button {
+        font-size: small;
+        width: 4rem;
+        height: 3.5rem;
+    }
+
+    #clearInputBtn {
+        display: none;
+    }
+
+    #canvas {
+        width: 90%;
+        height: 95%;
+    }
+}

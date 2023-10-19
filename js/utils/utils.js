@@ -37,7 +37,7 @@ const clearCanvas = () => {
 
 // if user resizes window this will resize canvas and walls
 const resizeCanvas = () => {
-
+    checkWindowSize();
     // recalculates the height and width of the canvas 
     canvasHeight = canvas.clientHeight;
     canvasWidth = canvas.clientWidth;

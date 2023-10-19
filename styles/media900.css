@@ -1,0 +1,65 @@
+@media (max-width: 900px) {
+    
+    input[type="text"],
+    input[type="number"],
+    select,
+    input[type="checkbox"] {
+        width: 50%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    select {
+        width: 95%;
+    }
+    
+    button {
+        width: 6rem;
+        margin-right: 0;
+    }
+
+    .bodyDiv {
+        font-size: small;
+    }
+
+    .bodyDiv button {
+        width: 4.5rem;
+    }
+
+
+    .clearPlaygroundDiv {
+        justify-content: center;
+    }
+
+    .clearPlaygroundDiv button {
+        width: 6rem;
+        /* justify-self: center; */
+        margin-right: 0;
+    }
+
+
+    .align-all-the-items div {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    .align-all-the-items div label {
+        width: 95%;
+    }
+
+    .align-all-the-items div input {
+        width: 95%;
+    }
+
+    .align-all-the-items div button {
+        margin-right: 0;
+    }
+
+    .renderDemoBtn {
+        display: none;
+    }
+}

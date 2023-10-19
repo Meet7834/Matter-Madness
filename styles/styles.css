@@ -21,7 +21,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Onest', cursive;
+    font-family: 'Onest', sans-serif;
 }
 
 footer {
@@ -31,7 +31,7 @@ footer {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    font-family: 'Onest', cursive;
+    font-family: 'Onest', sans-serif;
 }
 
 footer a {
@@ -58,7 +58,7 @@ input[type="text"],
 input[type="number"],
 select,
 input[type="checkbox"] {
-    width: 8rem;
+    width: 50%;
     padding: 0.5rem;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -98,6 +98,22 @@ button {
     cursor: pointer;
     background-color: #7BDFF2;
     font-family: 'Onest', sans-serif;
+}
+
+header > div:nth-child(2) {
+    display: none;
+}
+
+footer>button {
+    display: none;
+}
+
+footer>div:nth-child(2) {
+    display: block;
+}
+
+footer>div:nth-child(3) {
+    display: none;
 }
 
 .navbar h1 {
@@ -217,6 +233,12 @@ button {
     margin-bottom: 0.4rem;
     margin-right: 0.4rem;
     padding: 0.5rem;
+    background-color: #7BDFF2;
+}
+
+.bodyDiv button {
+    background-color: #333;
+    color: white;
 }
 
 .bodyDiv h4 {
@@ -225,7 +247,6 @@ button {
 
 .clearPlaygroundDiv {
     display: flex;
-    padding-right: 1rem;
     justify-content: end;
 }
 
