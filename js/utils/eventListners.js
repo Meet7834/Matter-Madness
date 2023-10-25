@@ -187,3 +187,52 @@ clearInputBtn.addEventListener('click', () => {
     document.querySelector("#frictionStaticInput").value = "";
     document.querySelector("#isStaticInput").checked = false;
 })
+
+const savePlaygroundBtn = document.querySelector(".savePlaygroundBtn");
+savePlaygroundBtn.addEventListener("click", () => {
+    const savedBodies = JSON.stringify(bodies, (key, value) =>
+        (key === 'parent' || key === 'parts' || key === 'body') ? undefined : value);
+
+    localStorage.setItem("savedBodies", JSON.stringify(savedBodies));
+})
+
+const loadPlaygroundFunction = () => {
+
+    bodies = []; // this array will keep track of bodies inside the world
+    defaultBodies.length = 0 // this array will keep track of walls and mouseConstraint
+    numberOfBodies = 0;
+
+    canvas = document.getElementById("canvas");
+    canvas.innerHTML = "";
+    canvasHeight = canvas.clientHeight;
+    canvasWidth = canvas.clientWidth;
+    render = null;
+    engine = Engine.create();
+    mouseConstraint = null;
+
+    renderWorld(); // renders the world
+    addWalls(); // adds walls to the world
+
+    // add all the bodies we created to the world
+    World.add(engine.world, defaultBodies);
+    
+    const storedBodiesJSON = localStorage.getItem("savedBodies");
+    const storedBodies = JSON.parse(storedBodiesJSON);
+    
+    if (storedBodies && storedBodies.length !== 0) {
+        JSON.parse(storedBodies).forEach(bodyJson => {
+            if (bodyJson.type !== "composite" && bodyJson.type !== "constraint") {
+                const body = Body.create(bodyJson);
+                World.add(engine.world, body);
+                bodies.push(body);
+            }
+        });
+    }
+    numberOfBodies = bodies.length;
+    refreshedPage();
+}
+
+const loadPlaygroundBtn = document.querySelector("#loadPlaygroundBtn");
+loadPlaygroundBtn.addEventListener("click", () => {
+    loadPlaygroundFunction();
+})

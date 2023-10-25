@@ -89,3 +89,17 @@ const resizeCanvas = () => {
 const refreshedPage = () => {
     renderBodiesDiv();
 }
+
+// Custom replacer function to handle circular references
+function circularReplacer() {
+    const seen = new WeakSet();
+    return (key, value) => {
+        if (typeof value === "object" && value !== null) {
+            if (seen.has(value)) {
+                return; // Skip circular references
+            }
+            seen.add(value);
+        }
+        return value;
+    };
+}

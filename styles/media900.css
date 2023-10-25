@@ -15,7 +15,7 @@
     }
     
     button {
-        width: 6rem;
+        width: 95%;
         margin-right: 0;
     }
 
@@ -33,11 +33,10 @@
     }
 
     .clearPlaygroundDiv button {
-        width: 6rem;
+        /* width: 6rem; */
         /* justify-self: center; */
         margin-right: 0;
     }
-
 
     .align-all-the-items div {
         flex-direction: column;

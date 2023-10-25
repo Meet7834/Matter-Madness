@@ -8,16 +8,16 @@ const Engine = Matter.Engine,
     World = Matter.World,
     Mouse = Matter.Mouse;
 
-const bodies = []; // this array will keep track of bodies inside the world
+let bodies = []; // this array will keep track of bodies inside the world
 const defaultBodies = []; // this array will keep track of walls and mouseConstraint
 let numberOfBodies = 0; // this is used to name the unlabeld bodies
 
 // this will be used for resizing and initializing size of walls
-const canvas = document.getElementById("canvas");
+let canvas = document.getElementById("canvas");
 let canvasHeight = canvas.clientHeight;
 let canvasWidth = canvas.clientWidth;
 let render = null;
-const engine = Engine.create();
+let engine = Engine.create();
 let mouseConstraint = null;
 
 const renderMouseConstraint = () => {

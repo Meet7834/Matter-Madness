@@ -250,7 +250,13 @@ footer>div:nth-child(3) {
 
 .clearPlaygroundDiv {
     display: flex;
-    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.clearPlaygroundDiv button {
+    width: 95%;
 }
 
 .hide {
